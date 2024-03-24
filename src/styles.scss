@@ -21,7 +21,7 @@ $Intranets-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$Intranets-theme: mat.define-light-theme((
+$Intranets-theme: mat.define-dark-theme((
   color: (
     primary: $Intranets-primary,
     accent: $Intranets-accent,
