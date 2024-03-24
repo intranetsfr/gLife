@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/cssatom/dist/cssatom.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -90,6 +91,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/cssatom/dist/cssatom.min.css",
               "src/styles.scss"
             ],
             "scripts": []

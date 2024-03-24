@@ -1,0 +1,71 @@
+{
+  "home": "Home",
+  "technology": "Technology",
+  "prices": "Prices",
+  "contact": "Contact-us",
+  "privacy": "Privacy",
+  "mentions": "Legal notices",
+  "page_not_found": "Page not found",
+  "back_home": "Back home",
+  "set_language": "Traduction en :",
+  "contact.firstname": "Your firstname",
+  "contact.firstname_placeholder": "Write your firstname here",
+  "contact.lastname": "Your lastname",
+  "contact.email": "Your email",
+  "contact.message": "Your message",
+  "contact.send_message": "Send my message",
+  "presentation": "Intranets - Une entreprise de transformation numérique et de conception !",
+  "teams": "Our team",
+  "prices_list":[
+    {
+      "name": "Site vitrine",
+      "description": "Réalisation de votre site vitrine grace à Intranets Extend, notre logiciel de création de page web",
+      "price": 200.00,
+      "boxName":"Intranets Extends"
+    },
+    {
+      "name": "Site vitrine",
+      "description": "Réalisation de votre site vitrine grace à Intranets Extend, notre logiciel de création de page web",
+      "price": 400.00,
+      "boxName":"Intranets Extends"
+    },
+    {
+      "name": "Application Mobile",
+      "description": "Réalisation de votre application mobile sur android et iOS grace à Intranets Extend+, notre logiciel de création de page web",
+      "price": 12000.00,
+      "boxName":"Intranets Extends"
+    }
+  ],
+  "technologies": [
+    {
+      "title": "NodeJS",
+      "description": "Desc...",
+      "type": "Framework Serveur",
+      "image": "assets/images/1200px-Node.js_logo.svg.png"
+    },
+    {
+      "title": "Angular",
+      "type": "Framework Client",
+      "description": "Description",
+      "image": "assets/images/Angular_full_color_logo.svg.png"
+    },
+    {
+      "title": "PHP",
+      "type": "Langage de programmation",
+      "description": "Description",
+      "image": "assets/images/PHP-logo.svg.png"
+    },
+    {
+      "title": "Electron JS",
+      "type": "Creation de logiciel en javascript coté",
+      "description": "Description",
+      "image": "assets/images/Electron_Software_Framework_Logo.svg.png"
+    },
+    {
+      "title": "ThreeJS",
+      "type": "Creation de contenu en 3D",
+      "description": "Description",
+      "image": "assets/images/three_js.png"
+    }
+  ]
+}
