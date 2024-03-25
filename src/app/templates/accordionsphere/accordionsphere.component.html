@@ -1,0 +1,29 @@
+<mat-accordion cdkDrag class="example-box" >
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{item['index']+1}} - {{item['title']}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{item['description']}}</p>
+      <mat-action-row>
+
+        <mat-panel-description>
+            <p>
+                Crée le : {{ item['createdAt'] | date: 'yyyy/MM/dd HH:mm:ss' }}
+                <br />
+                Mise à jour le : {{ item['createdAt'] | date: 'yyyy/MM/dd HH:mm:ss' }}
+            </p>
+        </mat-panel-description>
+        <button mat-button color="warn" (click)="deleteItem(item['id'])">
+            <mat-icon>delete</mat-icon>
+            <span>Supprimer</span>
+        </button>
+        <button mat-button color="primary">
+            
+            <mat-icon>edit</mat-icon>
+            <span>Modifier</span>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>

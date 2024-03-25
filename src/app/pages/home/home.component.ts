@@ -16,11 +16,12 @@ import { SphereDialogFormComponent } from '../../templates/sphere-dialog-form/sp
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { AccordionSphereComponent } from '../../templates/accordionsphere/accordionsphere.component';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    AccordionSphereComponent,
     CommonModule,
     CdkDropList,
     FormsModule,
@@ -73,11 +74,10 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.getAllResources();
     });
   }
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.spheres, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.travails, event.previousIndex, event.currentIndex);
   }
 }

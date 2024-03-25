@@ -6,5 +6,6 @@ module.exports = app => {
     /* Structure*/
     router.get('/', sphere_controller.get);
     router.post('/create', sphere_controller.create);
+    router.delete('/:id', sphere_controller.delete);
     app.use('/api', router);
 }

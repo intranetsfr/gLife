@@ -28,12 +28,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from "@angular/material/radio";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} from "@angular/material/core";
-
+import { AccordionSphereComponent } from './templates/accordionsphere/accordionsphere.component';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
     FormsModule,
+    AccordionSphereComponent,
     HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
