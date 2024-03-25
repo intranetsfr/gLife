@@ -1,1 +1,112 @@
-<p>home works!</p>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>diversity_2</mat-icon>
+                <span>Travail</span>
+            </ng-template>
+            <div class="text-align--right">
+                <button mat-mini-fab color="primary" matTooltip="Ajouter un element">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            @for (sphere of spheres; track sphere) {
+<!--
+    
+    <mat-card class="example-box" cdkDrag>
+        <mat-card-header>
+            <mat-card-title>{{sphere.label}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{sphere.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button matTooltip="This is a tooltip!">
+                Gérer
+            </button>
+            
+        </mat-card-actions>
+    </mat-card>
+-->
+            <mat-accordion cdkDrag class="example-box" >
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      This is the expansion title {{sphere.label}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      This is a summary of the content
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>This is the primary content of the panel.</p>
+                  <mat-action-row>
+                    <button mat-button color="warn" >
+                        <mat-icon>delete</mat-icon>
+                        <span>Supprimer</span>
+                    </button>
+                    <button mat-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                        <span>Modifier</span>
+                    </button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              </mat-accordion>
+            }
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>settings_accessibility</mat-icon>
+                <span>Perso</span>
+            </ng-template>
+            <div class="text-align--right">
+                <button mat-mini-fab color="primary" matTooltip="Ajouter un element">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            @for (sphere of spheres; track sphere) {
+
+            <mat-card class="example-box" cdkDrag>
+                <mat-card-header>
+                    <mat-card-title>{{sphere.label}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{sphere.description}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button matTooltip="This is a tooltip!">
+                        Gérer
+                    </button>
+
+                </mat-card-actions>
+            </mat-card>
+            }
+
+        </mat-tab>
+        <mat-tab>
+
+            <ng-template mat-tab-label>
+                <mat-icon>diversity_3</mat-icon>
+                <span>Relations</span>
+            </ng-template>
+            @for (sphere of spheres; track sphere) {
+
+            <mat-card class="example-box" cdkDrag>
+                <mat-card-header>
+                    <mat-card-title>{{sphere.label}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{sphere.description}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button matTooltip="This is a tooltip!">
+                        Gérer
+                    </button>
+
+                </mat-card-actions>
+            </mat-card>
+            }
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,5 +1,5 @@
 <mat-drawer-container class="container" [hasBackdrop]="false">
-  <mat-drawer #drawer mode="push" class="drawer">
+  <mat-drawer #drawer mode="over" class="drawer">
     <button mat-raised-button (click)="drawer.toggle()" color="primary">fermer</button>
     <hr />
     <button mat-raised-button>Accueil</button>
@@ -9,16 +9,18 @@
       <button mat-icon-button aria-label="Intranets Menu" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>&lt;intranets /&gt;</span>
+      <span>mLife</span>
       <span class="example-spacer"></span>
     </mat-toolbar>
     <div class="grid">
-      <div class="cell cell--6-col cell--3-offset">
+      <div class="cell cell--12-col cell--6-col-desktop cell--3-offset-desktop">
         <router-outlet></router-outlet>
       </div>
-      <footer>
-        
-      </footer>
-    </div>
+    </div> 
+        <footer>
+          <mat-toolbar>
+            
+          </mat-toolbar>
+        </footer> 
   </mat-drawer-content>
 </mat-drawer-container>

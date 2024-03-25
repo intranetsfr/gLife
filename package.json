@@ -1,11 +1,15 @@
 {
   "name": "intranets",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "e": "electron .",
     "build": "ng build",
+    "api": "nodemon -e .js,.twig, .css server/bin/www.js",
     "watch": "ng build --watch --configuration development",
+    "help": "pkill -f node",
     "test": "ng test"
   },
   "private": true,
@@ -20,22 +24,42 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "cssatom": "github:intranetsfr/css-atom",
+    "flag-icons": "^7.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.14.3",
+
+
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.3",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
+    "morgan": "~1.9.1",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7",
+    "twig": "^0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.3",
     "@angular/cli": "^17.2.3",
     "@angular/compiler-cli": "^17.2.0",
     "@types/jasmine": "~5.1.0",
+    "electron": "^29.1.5",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.3.2"
+    "typescript": "~5.3.2",
+    "nodemon": "^2.0.15"
   }
 }

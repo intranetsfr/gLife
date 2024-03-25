@@ -35,6 +35,7 @@ import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} 
   imports: [RouterOutlet,
     MatSidenavModule,
     MatButtonModule,
+    MatIconModule,
     MatListModule,
     MatIconModule,
     MatCardModule,
@@ -57,6 +58,7 @@ import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} 
     MatProgressBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
     MatToolbarModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
