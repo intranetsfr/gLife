@@ -21,12 +21,13 @@ exports.get = async (req, res) => {
 
 exports.updateIndex = async (req, res) => {
   const idsToUpdate = req.body.index;
+  const type = req.body.type;
 
   const updatePromises = [];
 
   idsToUpdate.forEach((item) => {
     const { id, index } = item;
-    updatePromises.push(db.sphere.update({ index }, { where: { id } }));
+    updatePromises.push(db.sphere.update({ index }, { where: { id:id, type: type } }));
   });
 
   await Promise.all(updatePromises);

@@ -78,14 +78,14 @@ export class HomeComponent {
       this.getAllResources();
     });
   }
-  drop(event: CdkDragDrop<string[]>, items: any) {
+  drop(event: CdkDragDrop<string[]>, items: any, type:string) {
     moveItemInArray(items, event.previousIndex, event.currentIndex);
     // Mettre à jour les index dans le tableau d'objets
     items.forEach((item:SphereData, index:number) => {
       item.index = index;
     });
     let newOrder = (items.map((item: { id: any; index: any; }) => ({ id: item.id, index: item.index })));
-    this.apiService.updateIndex({index: newOrder}).subscribe(result=>{
+    this.apiService.updateIndex({index: newOrder, type: type}).subscribe(result=>{
 
     })
   }

@@ -10,7 +10,7 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, travails)">
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, travails, 'travails')">
                 @for (travail of travails; track travail) {
                 <div class="example-box " cdkDrag>
 
@@ -31,7 +31,7 @@
                 </button>
             </div>
 
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, persos)">
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, persos, 'perso')">
                 @for (perso of persos; track perso) {
                 <div class="example-box " cdkDrag>
 
@@ -55,7 +55,7 @@
                 </button>
             </div>
 
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, relations)">
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, relations, 'relation')">
                 @for (relation of relations; track relation) {
                 <div class="example-box " cdkDrag>
 
