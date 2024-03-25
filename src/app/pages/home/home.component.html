@@ -1,6 +1,4 @@
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-
-
+<div>
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
         <mat-tab>
             <ng-template mat-tab-label>
@@ -12,10 +10,15 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-            @for (travail of travails; track travail) {
-                <app-accordion-sphere [item]="travail" (itemDeleted)="getAllResources()"/>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, travails)">
+                @for (travail of travails; track travail) {
+                <div class="example-box " cdkDrag>
+
+                    <app-accordion-sphere [item]="travail" (itemDeleted)="getAllResources()" />
+                </div>
                 <hr />
-            }
+                }
+            </div>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
@@ -27,11 +30,16 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-            
-            @for (perso of persos; track perso) {
-                <app-accordion-sphere [item]="perso" (itemDeleted)="getAllResources()"/>
+
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, persos)">
+                @for (perso of persos; track perso) {
+                <div class="example-box " cdkDrag>
+
+                    <app-accordion-sphere [item]="perso" (itemDeleted)="getAllResources()" />
+                </div>
                 <hr />
-            }
+                }
+            </div>
 
         </mat-tab>
         <mat-tab>
@@ -40,17 +48,22 @@
                 <mat-icon>diversity_3</mat-icon>
                 <span>Relations</span>
             </ng-template>
-            
+
             <div class="text-align--right">
                 <button mat-mini-fab color="primary" matTooltip="Ajouter un element" (click)="openDialog('relation')">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
 
-            @for (relation of relations; track relation) {
-                <app-accordion-sphere [item]="relation" (itemDeleted)="getAllResources()"/>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, relations)">
+                @for (relation of relations; track relation) {
+                <div class="example-box " cdkDrag>
+
+                    <app-accordion-sphere [item]="relation" (itemDeleted)="getAllResources()" />
+                </div>
                 <hr />
-            }
+                }
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>

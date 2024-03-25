@@ -17,6 +17,7 @@ import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AccordionSphereComponent } from '../../templates/accordionsphere/accordionsphere.component';
+import { SphereData } from '../../interface/SphereData';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -77,7 +78,15 @@ export class HomeComponent {
       this.getAllResources();
     });
   }
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.travails, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>, items: any) {
+    moveItemInArray(items, event.previousIndex, event.currentIndex);
+    // Mettre à jour les index dans le tableau d'objets
+    items.forEach((item:SphereData, index:number) => {
+      item.index = index;
+    });
+    let newOrder = (items.map((item: { id: any; index: any; }) => ({ id: item.id, index: item.index })));
+    this.apiService.updateIndex({index: newOrder}).subscribe(result=>{
+
+    })
   }
 }

@@ -18,9 +18,25 @@ exports.get = async (req, res) => {
       .send("Une erreur s'est produite lors de la récupération des données.");
   }
 };
+
+exports.updateIndex = async (req, res) => {
+  const idsToUpdate = req.body.index;
+
+  const updatePromises = [];
+
+  idsToUpdate.forEach((item) => {
+    const { id, index } = item;
+    updatePromises.push(db.sphere.update({ index }, { where: { id } }));
+  });
+
+  await Promise.all(updatePromises);
+  res.send({result: true})
+};
+
 exports.delete = async (req, res) => {
-  
-  const deletedSphere = await db.sphere.findOne({ where: { id: req.params.id } });
+  const deletedSphere = await db.sphere.findOne({
+    where: { id: req.params.id },
+  });
 
   if (!deletedSphere) {
     return res.status(404).send({ result: null, error: "Sphere not found" });
@@ -31,7 +47,7 @@ exports.delete = async (req, res) => {
 
   // Mettre à jour les index des éléments restants
   await db.sphere.update(
-    { index: db.Sequelize.literal('`index` - 1') }, // Décrémenter l'index de 1 pour tous les éléments après celui supprimé
+    { index: db.Sequelize.literal("`index` - 1") }, // Décrémenter l'index de 1 pour tous les éléments après celui supprimé
     { where: { index: { [db.Sequelize.Op.gt]: deletedSphere.index } } } // ....et les éléments avec un index supérieur à celui supprimé
   );
 
