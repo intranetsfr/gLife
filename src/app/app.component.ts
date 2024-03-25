@@ -33,6 +33,8 @@ import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} 
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
+    FormsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,

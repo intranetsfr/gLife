@@ -50,4 +50,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   & button{
     width: 100%;
   }
-} 
+}
+mat-form-field{
+  display: block !important;
+}
+.mat-mdc-tab-body-content{
+  overflow: hidden !important;
+}

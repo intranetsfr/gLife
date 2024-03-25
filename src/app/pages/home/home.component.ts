@@ -1,42 +1,82 @@
 import { Component } from '@angular/core';
-import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
-import {MatCardModule} from '@angular/material/card';
+import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDrag,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialog } from '@angular/material/dialog';
+import { SphereDialogFormComponent } from '../../templates/sphere-dialog-form/sphere-dialog-form.component';
+import { ApiService } from '../../services/api.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CdkDropList, CdkDrag, MatCardModule, MatButtonModule, MatTooltipModule, MatTabsModule,MatIconModule,MatExpansionModule],
+  imports: [
+    CommonModule,
+    CdkDropList,
+    FormsModule,
+    CdkDrag,
+    MatCardModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatTabsModule,
+    MatIconModule,
+    MatExpansionModule,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-
   panelOpenState = false;
-  spheres = [
-    {
-      label:"Etape 1",
-      type: "travail",
-      description: "rekjnfz erkjnzerkjn flzerkjn ",
-      allowDrag: false
-    },
-    {
-      label:"Etape 2",
-      type: "perso",
-      description: "rekjnfz erkjnzerkjn flzerkjn ",
-      allowDrag: false
-    },{
-      label:"Etape 3",
-      type: "relations",
-      description: "rekjnfz erkjnzerkjn flzerkjn ",
-      allowDrag: false
-    }
-  ];
+  travails = [];
+  persos = [];
+  relations = [];
+  spheres = [];
 
+  constructor(public dialog: MatDialog, private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    // Exemple d'appel à une méthode du service lors de l'initialisation du composant
+    this.getAllResources();
+  }
+
+  // Exemple de méthode pour appeler le service dans le composant
+  getAllResources(): void {
+    this.apiService.getAll().subscribe(
+      (data: any) => {
+        this.travails = data.travails;
+        this.persos = data.persos;
+        this.relations = data.relations;
+        console.log('Ressources récupérées avec succès :', data);
+        // Vous pouvez manipuler les données ici
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des ressources :', error);
+        // Vous pouvez gérer les erreurs ici
+      }
+    );
+  }
+  openDialog(type_selected: string): void {
+    const dialogRef = this.dialog.open(SphereDialogFormComponent, {
+      width: '75%',
+      disableClose: true,
+      data: { type: type_selected, action: 'insert' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.getAllResources();
+    });
+  }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.spheres, event.previousIndex, event.currentIndex);
   }

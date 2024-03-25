@@ -9,7 +9,7 @@ const logger = require('morgan');
 const app = express();
 
 
-app.use(cors({origin: [process.env.URL]}));
+app.use(cors({origin: [process.env.URL, 'http://localhost:4200']}));
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');

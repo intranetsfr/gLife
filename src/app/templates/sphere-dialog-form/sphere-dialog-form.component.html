@@ -1,0 +1,21 @@
+<form [formGroup]="sphereFormGroup" autocomplete="off" novalidate (ngSubmit)="onSubmit()">
+<h2 mat-dialog-title>Nouvelle element dans &laquo; {{data.type}} &raquo;</h2>
+<mat-dialog-content>
+  <br />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Titre :</mat-label>
+      <input matInput [(ngModel)]="data.title" required formControlName="title">
+      <mat-error class="full text-align--right">Le titre est obligatoire</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description :</mat-label>
+      <textarea matInput [(ngModel)]="data.description" rows="7" formControlName="description"></textarea>
+      <mat-error class="full text-align--right">La description est obligatoire</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions [align]="'end'">
+    <button mat-button (click)="onNoClick()">Fermer</button>
+    <button mat-raised-button type="submit" cdkFocusInitial>Valider</button>
+  </mat-dialog-actions>
+</form>
