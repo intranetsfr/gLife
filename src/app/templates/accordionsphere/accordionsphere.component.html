@@ -2,10 +2,15 @@
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
-            {{item['index']+1}} - {{item['title']}}
+            {{item['title']}}
         </mat-panel-title>
+        <mat-panel-description class="full" style="display: block;">
+          <div class="text-align--right" style="text-align: right !important">
+            <mat-chip disabled>{{item['index']+1}}</mat-chip>
+          </div>
+        </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>{{item['description']}}</p>
+      <p [innerHTML]="nl2br(item['description'])"></p>
       <mat-action-row>
 
         <mat-panel-description>
@@ -19,8 +24,7 @@
             <mat-icon>delete</mat-icon>
             <span>Supprimer</span>
         </button>
-        <button mat-button color="primary">
-            
+        <button mat-button color="primary" (click)="editItem(item)">
             <mat-icon>edit</mat-icon>
             <span>Modifier</span>
         </button>

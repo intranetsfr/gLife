@@ -43,25 +43,33 @@ export class SphereDialogFormComponent {
     public dialogRef: MatDialogRef<SphereDialogFormComponent>,
     private apiService: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: SphereData
-  ) {
-    console.log(data.action);
-  }
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   sphereFormGroup = this._formBuilder.group({
-    title: ['', Validators.required],
-    description: ['', Validators.required],
+    title: [this.data.title, Validators.required],
+    description: [this.data.description, Validators.required],
     type: [this.data.type, Validators.required],
   });
 
   onSubmit(): void {
     if (this.sphereFormGroup.valid) {
-      this.apiService.create(this.sphereFormGroup.value).subscribe((result) => {
-        this.onNoClick();
-      });
+      if (this.data.action == 'insert') {
+        this.apiService
+          .create(this.sphereFormGroup.value)
+          .subscribe((result) => {
+            this.dialogRef.close(true);
+          });
+      } else if (this.data.action == 'update') {
+        this.apiService
+          .update(this.data.id, this.sphereFormGroup.value)
+          .subscribe((result) => {
+            this.dialogRef.close(true);
+          });
+      }
     }
   }
 }

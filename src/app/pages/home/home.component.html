@@ -10,11 +10,11 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, travails, 'travails')">
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, travails, 'travail')">
                 @for (travail of travails; track travail) {
                 <div class="example-box " cdkDrag>
 
-                    <app-accordion-sphere [item]="travail" (itemDeleted)="getAllResources()" />
+                    <app-accordion-sphere [item]="travail" (itemDeleted)="getAllResources()"  (itemEditEvent)="openDialogEdit($event)"/>
                 </div>
                 <hr />
                 }
@@ -35,7 +35,7 @@
                 @for (perso of persos; track perso) {
                 <div class="example-box " cdkDrag>
 
-                    <app-accordion-sphere [item]="perso" (itemDeleted)="getAllResources()" />
+                    <app-accordion-sphere [item]="perso" (itemDeleted)="getAllResources()" (itemEditEvent)="openDialogEdit($event)"/>
                 </div>
                 <hr />
                 }
@@ -59,7 +59,7 @@
                 @for (relation of relations; track relation) {
                 <div class="example-box " cdkDrag>
 
-                    <app-accordion-sphere [item]="relation" (itemDeleted)="getAllResources()" />
+                    <app-accordion-sphere [item]="relation" (itemDeleted)="getAllResources()"  (itemEditEvent)="openDialogEdit($event)"/>
                 </div>
                 <hr />
                 }

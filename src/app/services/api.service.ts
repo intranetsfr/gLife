@@ -27,7 +27,7 @@ export class ApiService {
 
   // UPDATE
   update(id: number, resource: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, resource);
+    return this.http.put<any>(`${this.apiUrl}${id}`, resource);
   }
   updateIndex(resource:any):Observable<any> {
     return this.http.put<any>(`${this.apiUrl}index`, resource);  

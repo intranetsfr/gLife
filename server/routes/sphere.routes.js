@@ -7,6 +7,7 @@ module.exports = app => {
     router.get('/', sphere_controller.get);
     router.post('/create', sphere_controller.create);
     router.put('/index', sphere_controller.updateIndex);
+    router.put('/:id', sphere_controller.update);
     router.delete('/:id', sphere_controller.delete);
     app.use('/api', router);
 }

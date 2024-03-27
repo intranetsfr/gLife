@@ -47,19 +47,14 @@ export class HomeComponent {
   constructor(public dialog: MatDialog, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // Exemple d'appel à une méthode du service lors de l'initialisation du composant
     this.getAllResources();
   }
-
-  // Exemple de méthode pour appeler le service dans le composant
   getAllResources(): void {
     this.apiService.getAll().subscribe(
       (data: any) => {
         this.travails = data.travails;
         this.persos = data.persos;
         this.relations = data.relations;
-        console.log('Ressources récupérées avec succès :', data);
-        // Vous pouvez manipuler les données ici
       },
       (error) => {
         console.error('Erreur lors de la récupération des ressources :', error);
@@ -75,18 +70,43 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.getAllResources();
+      if (result) {
+        this.getAllResources();
+      }
     });
   }
-  drop(event: CdkDragDrop<string[]>, items: any, type:string) {
+  openDialogEdit(item: SphereData) {
+    const dialogRef = this.dialog.open(SphereDialogFormComponent, {
+      width: '75%',
+      disableClose: true,
+      data: {
+        type: item.type,
+        action: 'update',
+        id: item.id,
+        title: item.title,
+        description: item.description,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getAllResources();
+      }
+      console.log(result);
+    });
+  }
+  drop(event: CdkDragDrop<string[]>, items: any, type: string) {
     moveItemInArray(items, event.previousIndex, event.currentIndex);
     // Mettre à jour les index dans le tableau d'objets
-    items.forEach((item:SphereData, index:number) => {
+    items.forEach((item: SphereData, index: number) => {
       item.index = index;
     });
-    let newOrder = (items.map((item: { id: any; index: any; }) => ({ id: item.id, index: item.index })));
-    this.apiService.updateIndex({index: newOrder, type: type}).subscribe(result=>{
-
-    })
+    let newOrder = items.map((item: { id: any; index: any }) => ({
+      id: item.id,
+      index: item.index,
+    }));
+    this.apiService
+      .updateIndex({ index: newOrder, type: type })
+      .subscribe((result) => {});
   }
 }

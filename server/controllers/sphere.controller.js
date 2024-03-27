@@ -2,10 +2,20 @@ require("dotenv").config();
 const db = require("../models");
 exports.get = async (req, res) => {
   try {
+    const orderIndex = ["index", "ASC"];
     let data = {
-      travails: await db.sphere.findAll({ where: { type: "travail" } }),
-      persos: await db.sphere.findAll({ where: { type: "perso" } }),
-      relations: await db.sphere.findAll({ where: { type: "relation" } }),
+      travails: await db.sphere.findAll({
+        where: { type: "travail" },
+        order: [orderIndex],
+      }),
+      persos: await db.sphere.findAll({
+        where: { type: "perso" },
+        order: [orderIndex],
+      }),
+      relations: await db.sphere.findAll({
+        where: { type: "relation" },
+        order: [orderIndex],
+      }),
     };
     res.send(data);
   } catch (error) {
@@ -18,20 +28,39 @@ exports.get = async (req, res) => {
       .send("Une erreur s'est produite lors de la récupération des données.");
   }
 };
+exports.update = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const dataUpdate = req.body;
 
+    const updatedSphere = await db.sphere.update(dataUpdate, {
+      where: { id: id }
+    });
+    if (updatedSphere[0] === 1) {
+      res.send({ result: true });
+    } else {
+      res.send({ result: false, error: "L'élément n'a pas été mis à jour" });
+    }
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour de l\'élément :', error);
+    res.send({ result: false, error: error });
+  }
+}
 exports.updateIndex = async (req, res) => {
   const idsToUpdate = req.body.index;
   const type = req.body.type;
-
+  
   const updatePromises = [];
 
   idsToUpdate.forEach((item) => {
     const { id, index } = item;
-    updatePromises.push(db.sphere.update({ index }, { where: { id:id, type: type } }));
+    updatePromises.push(
+      db.sphere.update({ index }, { where: { id: id, type: type } })
+    );
   });
 
   await Promise.all(updatePromises);
-  res.send({result: true})
+  res.send({ result: true });
 };
 
 exports.delete = async (req, res) => {
