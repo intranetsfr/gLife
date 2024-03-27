@@ -2,6 +2,7 @@
 
 # Compiled output
 /server/database/*
+!/server/database/.gitkeep
 /dist
 /tmp
 /out-tsc
